@@ -24,12 +24,13 @@ object PaymentReader extends Serializable {
   val defaultUserBalance = 100
   val users: mutable.Map[String, Int] = mutable.Map()
 
-  val paymentRegex: Regex = "([A-Za-z0-9]+) (->) ([A-Za-z0-9]+) (:) ([0-9]+)".r
+  val paymentRegex = "([A-Za-z0-9]+) (->) ([A-Za-z0-9]+) (:) ([0-9]+)"
 
   def checkTransaction(transaction: String): Transaction = {
-    println("checkTransaction " + transaction + " " + paymentRegex.regex)
+    val regex = paymentRegex.r()
+    println("checkTransaction " + transaction + " " + regex.regex)
     transaction match {
-      case paymentRegex(from, _, to, _, value) =>
+      case regex(from, _, to, _, value) =>
         println("good")
         GoodTransaction(from, to, value.toInt)
       case _ =>
