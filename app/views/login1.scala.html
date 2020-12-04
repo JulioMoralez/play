@@ -1,0 +1,41 @@
+@()(implicit request: RequestHeader, flash: Flash)
+
+@main("Login") {
+    <h2>Login GET</h2>
+    <form method="get" action="validateLoginGet">
+      Username: <input type="text" name="username"/>
+      Password: <input type="password" name="password"/>
+      <input type="submit"/>
+    </form>
+    <br>
+
+    <h2>login POST</h2>
+    <form method="post" action="validateLoginPost">
+        @helper.CSRF.formField
+        Username: <input type="text" name="username"/>
+        Password: <input type="password" name="password"/>
+        <input type="submit"/>
+    </form>
+    <br>
+
+    <h2>Create</h2>
+    <form method="post" action="createUser">
+        @helper.CSRF.formField
+        Username: <input type="text" name="username"/>
+        Password: <input type="password" name="password"/>
+        <input type="submit"/>
+    </form>
+
+
+
+    @helper.form(action = routes.FileController.upload, Symbol("enctype") -> "multipart/form-data") {
+
+        <input type="file" name="textfile">
+
+        <p>
+            <input type="submit">
+        </p>
+
+    }
+
+    }

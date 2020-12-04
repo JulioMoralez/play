@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET     /taskList                           controllers.FirstController.taskList1
+GET     /withargs                           controllers.FirstController.withArgs(name, age: Int)
+GET     /withargs/:name/:age                controllers.FirstController.withArgs(name, age: Int)
+GET     /withargsregex/$name<[a-z]{2}\d\d>/:age                controllers.FirstController.withArgs(name, age: Int)
+GET     /login                              controllers.FirstController.login
+GET     /validateLoginGet                   controllers.FirstController.validateLoginGet(username, password)
+GET     /logout                             controllers.FirstController.logout
+
+GET     /                                   controllers.FirstController.index
+
+POST    /validateLoginPost                  controllers.FirstController.validateLoginPost
+POST     /createUser                        controllers.FirstController.createUser
+POST     /addTask                        controllers.FirstController.addTask
+POST     /removeTask                        controllers.FirstController.removeTask
+
++ nocsrf
+POST    /upload                                  controllers.FileController.upload
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
