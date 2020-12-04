@@ -27,7 +27,8 @@ object PaymentReader extends Serializable {
 
 
   def checkTransaction(transaction: String): Transaction = {
-    val paymentRegex = "([A-Za-z0-9]+) (->) ([A-Za-z0-9]+) (:) ([0-9]+)"
+//    val paymentRegex = "([A-Za-z0-9]+) (->) ([A-Za-z0-9]+) (:) ([0-9]+)"
+    val paymentRegex = "[0-9]"
     val regex = paymentRegex.r()
     println("check " + transaction + " " + paymentRegex.length + " " + regex.regex)
     transaction match {
